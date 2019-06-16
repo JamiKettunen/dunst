@@ -580,10 +580,6 @@ void notification_update_text_to_render(struct notification *n)
 void notification_do_action(const struct notification *n)
 {
         if (g_hash_table_size(n->actions)) {
-                if (g_hash_table_contains(n->actions, "default")) {
-                        signal_action_invoked(n, "default");
-                        return;
-                }
                 if (g_hash_table_size(n->actions) == 1) {
                         GList *keys = g_hash_table_get_keys(n->actions);
                         signal_action_invoked(n, keys->data);
